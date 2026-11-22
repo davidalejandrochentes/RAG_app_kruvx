@@ -1,0 +1,40 @@
+*.py[cod]
+.web
+assets/external/
+*.db
+.states
+.env
+.agents
+
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+.pytest_cache/
+.coverage
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv
+venv/
+env/
+
+# Reflex generated files
+reflex.lock/
+frontend.zip
+
+# IDE/Editor specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+opencode.json
+opencode.jsonc
+
+# OS generated files
+.DS_Store
+Thumbs.db

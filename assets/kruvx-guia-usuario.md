@@ -1,0 +1,1 @@
+# Guía Completa de kruvx — Todo lo que necesitas saber (versión exhaustiva real)

@@ -1,0 +1,179 @@
+/* Kruvx Design System — Tailwind v4 CSS-first config
+   This file defines custom utilities and design tokens that the JS config
+   in rxconfig.py may not fully translate to Tailwind v4 utilities.
+   Source: DESING.md & base.html (kruvx.cloud)
+   MUST match the kruvx.cloud static/css/styles.css and tailwind-config.js exactly. */
+
+/* Using standard rem (1rem = 16px) for simplicity.
+   DESING.md uses 62.5% root (1rem=10px) but our fontSize values
+   are already calibrated for standard rem (e.g., text-3 = 1rem = 16px). */
+:root {
+  /* font-size: 62.5%; -- disabled to avoid conflicts with Tailwind v4 JS config */
+}
+
+/* ─── Custom Spacing Utilities (gutter-*, space-*, max-width-content) ─── */
+@theme {
+  /* Gutter tokens (EXACT from kruvx.cloud) */
+  --spacing-gutter-mobile: 1.6rem;      /* 25.6px - px-gutter-mobile */
+  --spacing-gutter-desktop: 4rem;       /* 64px - px-gutter-desktop */
+
+  /* Gap/space tokens (EXACT from kruvx.cloud) */
+  --spacing-space-lg: 2.4rem;           /* 38.4px - gap-space-lg (desktop nav) */
+  --spacing-space-md: 1.6rem;           /* 25.6px - gap-space-md (right actions) */
+  --spacing-space-sm: 0.8rem;           /* 12.8px - gap-space-sm */
+  --spacing-space-xs: 0.4rem;           /* 6.4px - gap-space-xs */
+
+  /* Container max-width (EXACT from kruvx.cloud) */
+  --spacing-max-width-content: 90rem;   /* 1440px - max-w-max-width-content */
+
+  /* Letter-spacing tokens */
+  --tracking-tight: -0.01em;     /* Universal tight tracking (KEY from DESING.md) */
+  --tracking-normal: 0;
+  --tracking-loose: 0.1em;       /* Uppercase labels */
+  --tracking-looser: 0.15em;     /* Extreme emphasis */
+
+  /* Border radius */
+  --radius-pill: 50px;
+  --radius-card: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows (EXACT from kruvx.cloud) */
+  --shadow-nav: 0 1px 3px rgba(0,0,0,0.1), 0 2px 2px rgba(0,0,0,0.06), 0 0 2px rgba(0,0,0,0.07);
+  --shadow-card: 0 0 0.5px rgba(0,0,0,0.14), 0 1px 1px rgba(0,0,0,0.24);
+  --shadow-frap: 0 0 6px rgba(0,0,0,0.24), 0 8px 12px rgba(0,0,0,0.14);
+  --shadow-frap-active: 0 0 6px rgba(0,0,0,0.24), 0 8px 12px rgba(0,0,0,0);
+
+  /* Transition timing */
+  --ease-nav-link: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-button: cubic-bezier(0.32, 2.32, 0.61, 0.27);
+}
+
+/* ─── Utility aliases for easier use in class_name ─────────────────────── */
+@utility px-gutter-mobile {
+  padding-inline: var(--spacing-gutter-mobile);
+}
+@utility px-gutter-desktop {
+  padding-inline: var(--spacing-gutter-desktop);
+}
+@utility max-w-max-width-content {
+  max-width: var(--spacing-max-width-content);
+}
+@utility gap-space-lg {
+  gap: var(--spacing-space-lg);
+}
+@utility gap-space-md {
+  gap: var(--spacing-space-md);
+}
+@utility gap-space-sm {
+  gap: var(--spacing-space-sm);
+}
+@utility gap-space-xs {
+  gap: var(--spacing-space-xs);
+}
+@utility tracking-tight {
+  letter-spacing: var(--tracking-tight);
+}
+@utility tracking-loose {
+  letter-spacing: var(--tracking-loose);
+}
+@utility tracking-looser {
+  letter-spacing: var(--tracking-looser);
+}
+@utility rounded-pill {
+  border-radius: var(--radius-pill);
+}
+@utility rounded-card {
+  border-radius: var(--radius-card);
+}
+@utility shadow-nav {
+  box-shadow: var(--shadow-nav);
+}
+@utility shadow-card {
+  box-shadow: var(--shadow-card);
+}
+@utility shadow-frap {
+  box-shadow: var(--shadow-frap);
+}
+@utility shadow-frap-active {
+  box-shadow: var(--shadow-frap-active);
+}
+@utility transition-nav-link {
+  transition-property: color, transform;
+  transition-duration: 150ms;
+  transition-timing-function: var(--ease-nav-link);
+}
+@utility transition-200 {
+  transition-duration: 200ms;
+  transition-timing-function: var(--ease-out);
+}
+@utility transition-300 {
+  transition-duration: 300ms;
+  transition-timing-function: var(--ease-out);
+}
+@utility btn-interactive {
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ─── Font size utilities with built-in tight tracking ─────────────────── */
+@utility text-text-1 { font-size: 0.8125rem; line-height: 1.5; letter-spacing: var(--tracking-tight); }  /* 13px */
+@utility text-text-2 { font-size: 0.875rem; line-height: 1.5; letter-spacing: var(--tracking-tight); }   /* 14px */
+@utility text-text-3 { font-size: 1rem; line-height: 1.5; letter-spacing: var(--tracking-tight); }      /* 16px - DEFAULT body */
+@utility text-text-4 { font-size: 1.1875rem; line-height: 1.5; letter-spacing: var(--tracking-tight); }  /* 19px */
+@utility text-text-5 { font-size: 1.5rem; line-height: 1.2; letter-spacing: var(--tracking-tight); }     /* 24px H1/H2 */
+@utility text-text-6 { font-size: 1.75rem; line-height: 1.2; letter-spacing: var(--tracking-tight); }    /* 28px */
+@utility text-text-7 { font-size: 2.25rem; line-height: 1.2; letter-spacing: var(--tracking-tight); }    /* 36px */
+@utility text-text-8 { font-size: 2.8125rem; line-height: 1.2; letter-spacing: var(--tracking-tight); }  /* 45px */
+@utility text-text-9 { font-size: 3.625rem; line-height: 1.2; letter-spacing: var(--tracking-tight); }   /* 58px */
+@utility text-text-10 { font-size: 5rem; line-height: 1.2; letter-spacing: var(--tracking-tight); }      /* 80px */
+
+/* ─── Base styles ──────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    font-family: var(--font-body, "Manrope", sans-serif);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-neutral-warm text-text-primary antialiased tracking-tight;
+  }
+
+  /* Material Symbols Outlined - ensure proper rendering (match base.html) */
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    font-family: 'Material Symbols Outlined', sans-serif;
+  }
+}
+
+/* ─── Component helpers ────────────────────────────────────────────────── */
+@layer components {
+  /* Auto-dismiss messages (from base.html) */
+  .auto-dismiss-message {
+    animation: fadeOut 0.3s ease-out forwards;
+    animation-delay: 5s;
+  }
+
+  @keyframes fadeOut {
+    to { opacity: 0; }
+  }
+
+  /* Focus visible for accessibility */
+  *:focus-visible {
+    outline: 2px solid var(--color-green-accent);
+    outline-offset: 2px;
+  }
+
+  /* Smooth transitions for theme changes (from base.html styles.css) */
+  * {
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+
+  /* Selection styles (from base.html styles.css) */
+  ::selection {
+    background-color: #a7f3d0;
+    color: #052e1a;
+  }
+}
